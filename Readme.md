@@ -10,6 +10,8 @@ Verification is the process of ensuring any given design meets/adheres to the gi
 
 First attempt because, throughout the chip design and manufacturing flow, there are multiple points where it's mandatory to pause and ask this question. For example, _verification_, _validation_, and _testing_ all ensure the adherence to spec, just at different stages and with different expectations.
 
+![verification_validation_testing](/images/veri_vali_test.png)
+
 >  Verification is a process in which a design is tested (or verified) against a given design specification before tape-out.
 
 It handles the chip design in its soft copy (software) only. Hence, sometimes called **Pre-silicon validation**. 
@@ -36,16 +38,16 @@ All this effort in verification builds towards the concept of **First-Time-Silic
 
 > _“The industry has hit the lowest point ever in achieving first-silicon success. Historically, it’s been around 30%. Two years ago, it dropped to 24% and this year it dropped to 14%.”_ -Harry Foster, chief verification scientist at Siemens EDA
 
-//add image here
+![Statistics](/images/study.jpg)
 
 The decrease in FTR silicon success is due to increasing design complexities, within and outside the chip, and also due to increased specialisation of chips. From a few companies (fabless and foundry) to most companies today taking to designing custom chips, because it offers better control (among other reasons), the production of chips has increased. Without the right environment and workforce to drive this, FTR silicon becomes hard for novice companies, given the complexity. (According to the _2024 Siemens EDA / Wilson Research Group Functional Verification Study_)
 
 ---
 ## The Verification Flow and Available Techniques
 
-//add image here
+![Verification_flow](/images/verificationflow.jpg)
 
-At different stages of the flow, different techniques are used for verification. The prominent four are:
+At different stages of the flow, different techniques are used for verification. A combination of multiple techniques is usually more robust compared to any single one. The prominent four are:
 
 - Simulation
     - Uses a testbench to generate and monitor the design ports (input and outputs)
@@ -67,7 +69,7 @@ At different stages of the flow, different techniques are used for verification.
 After every modification, all the tests done till then are re-run on the design to ensure no new bugs are introduced. This is called _regression testing_.
 
 Due to time and resource constraints, verification can't run forever. To decide when to stop the verification, metrics are used. Reaching a satisfactory level on a metric implies enough confidence in the design to proceed to the next stage in the chip design flow. An example is code coverage, which reports the percentage of all lines of code utilized when the design was simulated. 
-  
+
 ---
 ## Current Trends and Future Possibilities
 
