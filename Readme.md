@@ -77,9 +77,15 @@ Due to time and resource constraints, verification can't run forever. To decide 
 
 - Timing-aware and power-aware simulations help in performance and power optimizations.
 
-- AI models are being used for faster and insightful coverage analysis.
+- AI/ML in verification is used for auto-generating tests or predicting coverage gaps.
   
 - Cloud-based companies are providing _Verification as a Service_ (VaaS) that utilizes the advanced computational resources can help in easier and faster simulations.
+
+- Shift-left verification: verifying earlier in the design flow
+
+- Hardware-software co-verification: testing embedded software on RTL/FPGAs.
+
+- Portable stimulus/cloud verification enables sharing tests across teams and sites.
 
 ---
 
