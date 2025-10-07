@@ -26,8 +26,61 @@ ASICs are effectively frozen once fabricated, so any flaw can require costly res
 ---
 ## The Significance of Verification and the Concept of First-Time-Right Silicon
 
-Verification is like a feedback system. Any improvement or additions to the design must be _searched_ for bugs, syntactical, logical, functional, etc. This is reported to the design team for modifications, and the process repeats. 
-Hence, the design and verification of a chip (or an IC) happen in parallel. Rectification of bugs found earlier in the chip design flow costs less compared to those found at the end. This is largely due to the increasing details as we go lower in the abstraction levels.
+Verification is like a feedback system. Any improvement or additions to the design must be _searched_ for bugs, syntactical, logical, functional, etc. This is reported to the design team for modifications, and the process repeats. Hence, the design and verification of a chip (or an IC) happen in parallel. Rectification of bugs found earlier in the chip design flow costs less compared to those found at the end. This is largely due to the increasing details as we go lower in the abstraction levels.
 For example, a simulation error is solved by changing the RTL code, which takes less time. But a timing violation (during STA) requires a relatively longer time and more effort to be solved (a setup failure, for instance, requires a redesign of the logic or other techniques to decrease the delay).  
-Understandably, surveys (e.g., 2024 Siemens EDA / Wilson Research Group Functional Verification Study) indicate that 60–70% of engineering effort in chip projects belongs in verification. Even after that, the possibility of bugs is not null since due to time constraints, verification cannot be extensive or exhaustive.
-Bugs uncovered pose risks of functional failure, particularly so in critical systems like automotives, defense systems. This, in turn, results in loss of revenue and reputation for the company. Sufficient to say, _verification_ becomes one of the crucial components responsible to make or break the chips (and the companies).  
+
+Understandably, surveys (e.g., 2024 Siemens EDA / Wilson Research Group Functional Verification Study) indicate that 60–70% of engineering effort in chip projects belongs in verification. Even after that, the possibility of bugs remains non-zero, as verification cannot be exhaustive due to time constraints.
+Bugs uncovered pose risks of functional failure, particularly so in critical systems like automotives, defense, and healthcare systems. This, in turn, results in loss of revenue and reputation for the company. Sufficient to say, _verification_ becomes one of the crucial components responsible for making or breaking the chips (and the companies).  
+
+All this effort in verification builds towards the concept of **First-Time-Silicon** or FTR silicon, which requires that the chip manufactured in the first iteration of the chip design and manufacturing flow is fully functional. This is largely due to the expensive re-spins in case of a failure, and the unaffordability of chip deployment failure, given the all-pervasive nature of electronics. The need for FTR silicon is also fuelled by the short time to market, courtesy of the ever-evolving landscape of technology and increasing competitiveness of fellow organisations. 
+
+> _“The industry has hit the lowest point ever in achieving first-silicon success. Historically, it’s been around 30%. Two years ago, it dropped to 24% and this year it dropped to 14%.”_ -Harry Foster, chief verification scientist at Siemens EDA
+
+//add image here
+
+The decrease in FTR silicon success is due to increasing design complexities, within and outside the chip, and also due to increased specialisation of chips. From a few companies (fabless and foundry) to most companies today taking to designing custom chips, because it offers better control (among other reasons), the production of chips has increased. Without the right environment and workforce to drive this, FTR silicon becomes hard for novice companies, given the complexity. (According to the _2024 Siemens EDA / Wilson Research Group Functional Verification Study_)
+
+---
+## The Verification Flow and Available Techniques
+
+//add image here
+
+At different stages of the flow, different techniques are used for verification. The prominent four are:
+
+- Simulation
+    - Uses a testbench to generate and monitor the design ports (input and outputs)
+    - The inputs are constrained, randomized (usually), and thus, not exhaustive
+    - The outputs are visualised as waveforms or verified against expected outputs (using scoreboard and checkers)
+    - Utilised mostly during the initial stages of the design flow, since code-level simulation requires fewer resources compared to gate-level or lower
+- Emulation
+    - Deploy the design on hardware (like an FPGA) and monitor it via a simulator
+    - Relatively less time consumed 
+- Formal verification
+    - Mathematically proves the properties of the design
+    - Exhaustive in nature (all possible inputs are verified)
+    - A formally verified design has relatively more reliability
+- Prototyping
+    - The system where the chip will be used is built to verify/test its working
+    - Helps in system-level testing
+- Static Timing Analysis (STA) is used to identify timing violations.
+
+After every modification, all the tests done till then are re-run on the design to ensure no new bugs are introduced. This is called _regression testing_.
+
+Due to time and resource constraints, verification can't run forever. To decide when to stop the verification, metrics are used. Reaching a satisfactory level on a metric implies enough confidence in the design to proceed to the next stage in the chip design flow. An example is code coverage, which reports the percentage of all lines of code utilized when the design was simulated. 
+  
+---
+## Current Trends and Future Possibilities
+
+- Metric-driven verification is widely used currently.
+
+- Timing-aware and power-aware simulations help in performance and power optimizations.
+
+- AI models are being used for faster and insightful coverage analysis.
+  
+- Cloud-based companies are providing _Verification as a Service_ (VaaS) that utilizes the advanced computational resources can help in easier and faster simulations.
+
+---
+
+Each leap in semiconductor technology fuels advances in verification — from simulation acceleration to AI-driven coverage analysis. In turn, these improved verification methodologies enable the next wave of reliable, high-performance chips. It’s a virtuous cycle that drives the modern semiconductor revolution. 
+
+This blog was an attempt at understanding chip verification as it stands today. The information is reliable to the best of my knowledge. If there are any discrepancies or mistakes, please feel free to contact me for corrections. 
