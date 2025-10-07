@@ -71,21 +71,21 @@ After every modification, all the tests done till then are re-run on the design 
 Due to time and resource constraints, verification can't run forever. To decide when to stop the verification, metrics are used. Reaching a satisfactory level on a metric implies enough confidence in the design to proceed to the next stage in the chip design flow. An example is code coverage, which reports the percentage of all lines of code utilized when the design was simulated. 
 
 ---
-## Current Trends and Future Possibilities
+## Current and Future Trends
 
 - Metric-driven verification is widely used currently.
 
-- Timing-aware and power-aware simulations help in performance and power optimizations.
+- Timing-aware and power-aware simulations are used for performance and power optimizations.
 
-- AI/ML in verification is used for auto-generating tests or predicting coverage gaps.
+- Shift-left verification method is adopted for verification earlier in the design flow, so that the cost and time required to fix bugs is decreased
+
+- Hardware-software co-verification is used to ensure testing embedded software on RTL/FPGAs, an example of shift-left verification.
+
+- AI/ML in verification is being used for auto-generating tests or predicting coverage gaps.
   
-- Cloud-based companies are providing _Verification as a Service_ (VaaS) that utilizes the advanced computational resources can help in easier and faster simulations.
+- Cloud-based companies are planning to provide _Verification as a Service_ (VaaS) that utilizes the advanced computational resources can help in easier and faster simulations.
 
-- Shift-left verification: verifying earlier in the design flow
-
-- Hardware-software co-verification: testing embedded software on RTL/FPGAs.
-
-- Portable stimulus/cloud verification enables sharing tests across teams and sites.
+- Portable stimulus/cloud verification will enable sharing tests across teams and sites.
 
 ---
 
