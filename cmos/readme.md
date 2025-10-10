@@ -58,7 +58,7 @@ When the inputs change (or switch), given the transistors are non-ideal, both NM
 On the other hand, CMOS technology hadn't truly kept up. In the early 1960s, NMOS technology was still predominantly used, alongside BJTs. But in 1965, Gordon Moore (from Intel) made an empirical observation and prediction that: 
 > _The number of transistors on a computer chip would approximately double every two years, leading to a significant increase in computing power while reducing the cost per transistor_
 
-(It's important to note that this is not a _law_. Unlike Newton's _laws_ of motion, for example, this was simply an observation, initially. And companies have strived to keep up with it, hence it has turned into a prediction. Though that has been failing recently, too. //add a link to related article)
+(It's important to note that this is not a _law_. Unlike Newton's _laws_ of motion, for example, this was simply an observation, initially. And companies have strived to keep up with it, hence it has turned into a prediction. Though some argue that it has been failing recently, some say there are extensions to it. Read more [here](https://medium.com/@sasly204800/is-moores-law-ending-b6da8da0f20a))
 
 This pushed the semiconductor industry to improve constantly, but it was hard to keep up with due to increased power consumption (due to increased transistor density). This made the low-power CMOS technology more attractive compared to BJTs or NMOS-only circuits. Coupled with Dennard's scaling, which stated roughly that:
 > _As transistor dimensions shrink, the power density remains constant because both voltage and current scale downward with the size reduction, allowing the power use to stay in proportion with area_
@@ -77,12 +77,12 @@ An inverter is not a universal gate. But it is called the fundamental building b
 
 ![inverter](/cmos/images/inverter.png)
 
-Suppose, initially the input is at a stable 0, and output is at a stable 1, then NMOS is off and PMOS is on. 
+Suppose, initially, the input is at a stable 0, and the output is at a stable 1, then the NMOS is off and the PMOS is on. 
 - When V<sub>in</sub> starts increasing, the initial state is maintained (in Region A).
-- When V<sub>in</sub> reaches beyond threshold voltage of NMOS, NMOS turns on (saturation region) and V<sub>out</sub> starts decreasing. (Region B) PMOS is in linear region here.
-- Eventually, in Region C, V<sub>in</sub> = V<sub>out</sub>. This is the transition period, that produces maximum short circuit current (since both MOSFETs are in saturation). If this is narrow, the short-circuit power dissipated decreases.
-- Region D operation is similar to Region B, but now NMOS is in linear region and PMOS is in saturation.
-- When V<sub>in</sub> goes to V<sub>DD</sub>, NMOS is in linear region and PMOS is switched off. (Region E)
+- When V<sub>in</sub> reaches beyond the threshold voltage of NMOS, NMOS turns on (saturation region) and V<sub>out</sub> starts decreasing. (Region B) PMOS is in the  linear region here.
+- Eventually, in Region C, V<sub>in</sub> = V<sub>out</sub>. This is the transition period that produces maximum short circuit current (since both MOSFETs are in saturation). If this is narrow, the short-circuit power dissipated decreases.
+- Region D operation is similar to Region B, but now NMOS is in the linear region and PMOS is in saturation.
+- When V<sub>in</sub> goes to V<sub>DD</sub>, NMOS is in the linear region and PMOS is switched off. (Region E)
 
 ### Dynamic Operation
 
@@ -109,11 +109,11 @@ These brief spikes occur because the capacitor resists sudden voltage changes, c
 
 In digital circuits, logic levels are not single voltages but ranges of voltages: a HIGH and a LOW are represented by voltage intervals rather than precise values. For example, a HIGH might be any voltage above a certain threshold, and a LOW any voltage below another threshold. This ensures that small variations or fluctuations in voltage do not cause incorrect logic interpretation. The circuit's ability to tolerate noise signals is referred to as the noise immunity, and the noise margin is a  quantitative measure of this tolerance. 
 
-![noise](/cmos/images/noise_margin.png)
+![noise](/cmos/images/noise.png)
 
-To get the maximum noise margin, so we get maximum noise immunity, V<sub>OH</sub> = V<sub>DD</sub> and V<sub>OL</sub> = 0. This is only possible if PMOS is responsible for pull-up and NMOS for pull-down, which is the case in any CMOS logic circuit. PMOS, as a device, passes logic 1 well, which means the output voltage can reach up to V<sub>DD</sub> if the input voltage is low. Similarly, NMOS passes logic 0 well. (Read more here (//add link)). High noise immunity is the second (of the two) main reasons why the CMOS logic family is predominantly used. 
+To get the maximum noise margin, so we get maximum noise immunity, V<sub>OH</sub> = V<sub>DD</sub> and V<sub>OL</sub> = 0. This is only possible if PMOS is responsible for pull-up and NMOS for pull-down, which is the case in any CMOS logic circuit. PMOS, as a device, passes logic 1 well, which means the output voltage can reach up to V<sub>DD</sub> if the input voltage is low. Similarly, NMOS passes logic 0 well. (Read more [here](https://siliconvlsi.com/why-pmos-pass-strong-1-and-weak-0/)). High noise immunity is the second (of the two) main reasons why the CMOS logic family is predominantly used. 
 
-More complex logic functions can be created by putting additional devices in parallel or in series with the basic inverter transistors, but in every configuration, the "active" level of the output is opposite to that of the input(s), as we know. Therefore, to create "positive logic" in CMOS, you must always have two stages, where the second stage is usually just an inverter that has good drive characteristics for high fanout. The circuits themselves don't usually have a strong current drive because, to get more current, wider transistors are required. Instead of having all wide transistors in a circuit, which increases the area consumed, having only two wide transistors (in the inverter) is more efficient. This gives another reason to use CMOS logic family.
+More complex logic functions can be created by putting additional devices in parallel or in series with the basic inverter transistors, but in every configuration, the "active" level of the output is opposite to that of the input(s), as we know. Therefore, to create "positive logic" in CMOS, you must always have two stages, where the second stage is usually just an inverter that has good drive characteristics for high fanout. The circuits themselves don't usually have a strong current drive because, to get more current, wider transistors are required. Instead of having all wide transistors in a circuit, which increases the area consumed, having only two wide transistors (in the inverter) is more efficient. This gives another reason to use the CMOS logic family.
 
 ---
 
