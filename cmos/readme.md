@@ -48,7 +48,9 @@ The work on MOSFETs by Atalla and Kahng was later picked up and built upon. Chih
 > Technology, in this context, means the method of fabricating the device.
 
 CMOS logic family contains circuits that incorporate the _Complementary MOS_ logic, which are built using the pull-up network (made of PMOS) that is functionally the _complement_ of the pull-down network (made of NMOS). 
-//add a pic here
+
+![cmos_logic_circuit](/cmos/images/cmos.png)
+
 Essentially, since the networks are complementary, in digital circuits that deal with 0s and 1s only, either the pull-up or pull-down network would be active at a time. Thus, the _static power_ (when inputs are constant) consumed by the circuit is ideally zero and practically near zero (transistors are not ideal, so some leakage is involved).
 
 When the inputs change (or switch), given the transistors are non-ideal, both NMOS and PMOS transistors are switched on momentarily. This causes a direct path (DC path) from V<sub>DD</sub> to Gnd. This contributes to _short circuit power_. The output of the circuit also drives the input of another circuit it's connected to (which is essentially charging/discharging the load capacitance). This contributes to _dynamic power_. _Dynamic power_ is significantly higher than the _static power_ and _short circuit power_. Regardless, the overall consumption is much lower than having significant _static_ and _dynamic_ power, as in BJT or NMOS-only circuits. This is one of the two main reasons why the CMOS logic family is predominant (the other being high noise immunity - discussed later //add hyperlink if possible). This also means that significant power consumption is dependent on the switching frequency, which is directly related to the operating frequency. In a sense, the power dissipation can be controlled by changing the operating frequency. It's a tradeoff based on the application requirements of faster operation or low power. 
@@ -72,7 +74,9 @@ An inverter is not a universal gate. But it is called the fundamental building b
 > In digital logic design, a universal logic gate can be used to implement any Boolean logic equation. E.g., NAND/NOR gates.
 
 ### Static operation
-//add image of inverter VTC here
+
+![inverter](/cmos/images/inverter.png)
+
 Suppose, initially the input is at a stable 0, and output is at a stable 1, then NMOS is off and PMOS is on. 
 - When V<sub>in</sub> starts increasing, the initial state is maintained (in Region A).
 - When V<sub>in</sub> reaches beyond threshold voltage of NMOS, NMOS turns on (saturation region) and V<sub>out</sub> starts decreasing. (Region B) PMOS is in linear region here.
@@ -81,7 +85,9 @@ Suppose, initially the input is at a stable 0, and output is at a stable 1, then
 - When V<sub>in</sub> goes to V<sub>DD</sub>, NMOS is in linear region and PMOS is switched off. (Region E)
 
 ### Dynamic Operation
-//add timing diagram here
+
+![dynamic_cmos_inverter](/cmos/images/power3.png)
+
 During switching in a CMOS inverter, the input and output are capacitively coupled through parasitic capacitances.
 When the input voltage changes quickly (high frequency operation), this coupling capacitor momentarily tries to maintain the same voltage difference between input and output:
 
@@ -92,17 +98,19 @@ Input falls → output undershoots (goes slightly below 0 V)
 These brief spikes occur because the capacitor resists sudden voltage changes, causing transient noise and a slight delay before the output settles.
 
 ### Power dissipation
-//add images here
-Dynamic power is dissipated while charging or discharging the load capacitor.
-//img
-Short-circuit power is dissipated due to a DC path between the power and ground rails. (In Region B, C, D)
-//img 
-Static power is dissipated when the input is constant and the device is in a steady state. (In Region A and E)
+
+![power](/cmos/images/power.png)
+
+- Dynamic power is dissipated while charging or discharging the load capacitor.
+- Short-circuit power is dissipated due to a DC path between the power and ground rails. (In Region B, C, D)
+- Static power is dissipated when the input is constant and the device is in a steady state. (In Region A and E)
 
 ### Noise Immunity
 
 In digital circuits, logic levels are not single voltages but ranges of voltages: a HIGH and a LOW are represented by voltage intervals rather than precise values. For example, a HIGH might be any voltage above a certain threshold, and a LOW any voltage below another threshold. This ensures that small variations or fluctuations in voltage do not cause incorrect logic interpretation. The circuit's ability to tolerate noise signals is referred to as the noise immunity, and the noise margin is a  quantitative measure of this tolerance. 
-//add image here
+
+![noise](/cmos/images/noise_margin.png)
+
 To get the maximum noise margin, so we get maximum noise immunity, V<sub>OH</sub> = V<sub>DD</sub> and V<sub>OL</sub> = 0. This is only possible if PMOS is responsible for pull-up and NMOS for pull-down, which is the case in any CMOS logic circuit. PMOS, as a device, passes logic 1 well, which means the output voltage can reach up to V<sub>DD</sub> if the input voltage is low. Similarly, NMOS passes logic 0 well. (Read more here (//add link)). High noise immunity is the second (of the two) main reasons why the CMOS logic family is predominantly used. 
 
 More complex logic functions can be created by putting additional devices in parallel or in series with the basic inverter transistors, but in every configuration, the "active" level of the output is opposite to that of the input(s), as we know. Therefore, to create "positive logic" in CMOS, you must always have two stages, where the second stage is usually just an inverter that has good drive characteristics for high fanout. The circuits themselves don't usually have a strong current drive because, to get more current, wider transistors are required. Instead of having all wide transistors in a circuit, which increases the area consumed, having only two wide transistors (in the inverter) is more efficient. This gives another reason to use CMOS logic family.
