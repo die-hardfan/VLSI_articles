@@ -65,11 +65,16 @@ This pushed the semiconductor industry to improve constantly, but it was hard to
 
 the revolution in ICs was unprecedented. CMOS enabled a smooth adoption of both the laws and, thus, by the 1980s, it became the most widely used technology. This era dictated the performance by decreasing the transistor size, which increased the operating frequency (less delay since transistors were physically closer, electrons could travel faster) and decreased the cost of production (more transistors in the same silicon area meant less area per transistor, so overall less money spent per transistor). And the basic building block of all digital circuits was: the _CMOS_ inverter. 
 
+### How has CMOS technology impacted us? 
+Consider the example of a pacemaker. Low power, noise immunity, and small, all these are all extremely desirable in this device. Something that saves and extends lives. Most pacemakers today are affordable and last as long as 7 to 10 years. Or consider an electronic doorlock (Internet of Things). This is something that remains a part of our lives quietly, so much so that we almost forget about it after installation, but it makes our lives easier, safer. IoTs require long battery life, where low power helps. These are just two examples of the many useful things around us that CMOS has helped make. 
+
 ---
 
 ## The CMOS Inverter
 
-An inverter is not a universal gate. But it is called the fundamental building block because of the similarity between a CMOS logic circuit and an inverter: PMOS to pull-up network, NMOS to pull-down network. A CMOS logic circuit always implements the logical complement of a given function, much like an inverter; hence, their operation is almost identical (not completely, since an inverter has only one PMOS and one NMOS, but other logic circuits can have many). Often, a university curriculum includes a detailed analysis of the CMOS inverter because it's the foundation for understanding the CMOS logic family and CMOS technology. 
+An inverter is not a universal gate. But it is called the fundamental building block because of the similarity between a CMOS logic circuit and an inverter: PMOS as the pull-up network, NMOS as the pull-down network. A CMOS logic circuit always implements the logical complement of a given function, much like an inverter; hence, their operation is almost identical. Often, a university curriculum includes a detailed analysis of the CMOS inverter because it's the foundation for understanding the CMOS logic family and CMOS technology. 
+
+> The simplest network possible is a single device, so a CMOS inverter is the simplest CMOS logic circuit possible. Analysis of complex circuits starts with the simplest one after all.
 
 > In digital logic design, a universal logic gate can be used to implement any Boolean logic equation. E.g., NAND/NOR gates.
 
@@ -126,3 +131,9 @@ More complex logic functions can be created by putting additional devices in par
 - The planar transistor approach started to have problems with excessive leakage, even with Hi-k metal gate. Thus, the transition to finFETs (22nm and below). 
 - In 2023, the transition from finFETs to Gate-All-Around (GAAFET) happened (3nm or 2nm).
 - CFET technology that, instead of manufacturing the P-transistors and N-transistors on the same wafer directly, stacks them, with the N-transistors on top of the P-transistors, so taking up about the same space as a single transistor, leading to an increase in density and decrease in space, is in development. 
+
+---
+
+The semiconductor industry is ever-evolving and is a mind-boggling representation of how far humanity has come in terms of technology. Just a couple of years ago, most of what we are used to today seemed like science fiction. Yet today, we have robots, AI, and self-driving cars all around us. The driving force for all these advancements is undoubtedly the revolution in electronics. This article was an attempt at understanding the fascinating evolution of technology and the groundbreaking innovation of CMOS technology, which marked the beginning of modern-day electronics. 
+
+The information is reliable to the best of my knowledge. If there are any discrepancies or mistakes, please feel free to contact me for corrections.
